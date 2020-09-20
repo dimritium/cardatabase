@@ -1,4 +1,5 @@
-.target
+HELP.md
+target/**
 .apt_generated
 .classpath
 .factorypath
@@ -6,9 +7,9 @@
 .settings
 .springBeans
 .sts4-cache
-.mvnw
-.mvnw.cmd
-
+mvnw
+mvnw.cmd
+.mvn/**
 ### IntelliJ IDEA ###
 .idea
 *.iws
