@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
 import com.dimritium.cardatabase.domain.Car;
@@ -19,7 +21,8 @@ import com.dimritium.cardatabase.domain.User;
 import com.dimritium.cardatabase.domain.UserRepository;
 
 @SpringBootApplication
-public class CardatabaseApplication {
+public class CardatabaseApplication extends SpringBootServletInitializer {
+	
 	@Autowired
 	private CarRepository carRepository;
 
@@ -30,7 +33,12 @@ public class CardatabaseApplication {
 	private UserRepository urepository;
 
 	private static final Logger logger = LoggerFactory.getLogger(CardatabaseApplication.class);
-
+	
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(CardatabaseApplication.class);
+	}
+	
 	public static void main(String[] args) {
 		SpringApplication.run(CardatabaseApplication.class, args);
 		logger.info("App start");
